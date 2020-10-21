@@ -37,3 +37,6 @@ function drawText(text, x, y) {
 
 
 
+// function onEditImage(){
+
+// }
