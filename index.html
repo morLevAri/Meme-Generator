@@ -27,8 +27,6 @@
 
     </header>
 
-
-
     <main class="main-content gallery-container">
 
 
@@ -108,19 +106,35 @@
 
     </main>
 
+    <section class="editor-container flex flex-around">
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="500" width="500"></canvas>
+        </div>
+        <div class="control-container flex">
+            <label for="user-text"></label>
+            <input type="text" id="user-text" name="user-text" placeholder="Your text" />
+            <div class="features-panel flex-around">
+                <button class="icon2"><img src="icons/aPlus.png" /></button>
+                <button class="icon1"><img src="icons/aMinus.png" /></button>
+                <button class="icon3"><img src="icons/left.png"></button>
+                <button class="icon4"><img src="icons/center.png"></button>
+                <button class="icon5"><img src="icons/right.png"></button>
 
+            </div>
+        </div>
+    </section>
 
     <footer class="main-footer flex-around">
         <div class="footer-container">
             <small>All rights reserved 2020</small>
         </div>
-        <ul class="nav-social flex-around clean-list">
+        <ul class="footer-social flex-around clean-list">
             <li class="social"><i class="fa fa-facebook"></i></li>
             <li class="social"><i class="fa fa-twitter"></i></li>
             <li class="social"><i class="fa fa-instagram"></i></li>
         </ul>
     </footer>
- 
+
 
 </body>
 
