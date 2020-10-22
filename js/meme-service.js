@@ -2,15 +2,16 @@
 
 
 
-var gMeme = {}
+var gMeme = []
 
 
 
-function createMeme() {
+function createMeme(imgId = 1, imgUrl = 'img/2.jpg') {  // <-----
 
     var meme = {
-        selectedImgId: 5,
+        selectedImgId: imgId,
         selectedLineIdx: 0,
+        selectedImgUrl: imgUrl,
         lines: [
             {
                 txt: 'I never eat Falafel',
