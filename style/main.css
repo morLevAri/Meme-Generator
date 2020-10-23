@@ -27,12 +27,13 @@
 /*--------------- BASIC ---------------*/
 
 body, html {
+    overflow-x: hidden;
     color: #606060;
     font-family: poppinsR, sans-serif;
     font-size: 1rem;
     background-color: #22252c;
     height: 100%;
-    width: 100%;
+    max-width: 100%;
     margin: 0;
 }
 
@@ -55,7 +56,7 @@ img {
 /*--------------- header area ---------------*/
 
 .main-header {
-    max-width: 1257PX;
+    /* max-width: 1257PX; */
     margin: 0 auto;
     padding: 0 1rem;
     max-width: 78.562rem;
@@ -77,11 +78,11 @@ img {
 
 .main-header .main-nav {
     max-width: 31.25rem;
-    margin-right: 15.437rem;
+    margin-right: 10rem;
 }
 
 .main-header .main-nav li {
-    font-size: 21px;
+    font-size: 1.3125rem;
     padding: 0px 21px 0px 21px;
     margin-left: 31.5px;
 }
@@ -91,6 +92,18 @@ img {
     background-color: #fefefe;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
+}
+
+.main-header .hamburger-menu {
+    display: none;
+}
+
+.main-header button {
+    font-size: 1.5em;
+    margin-right: 3em;
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
 
 /*--------------- main-content ---------------*/
@@ -126,6 +139,7 @@ img {
 .gallery-search .search-icon {
     position: relative;
     z-index: 2;
+    display: none;
     left: -55px;
     height: 30px;
     width: 30px;
@@ -217,17 +231,9 @@ img {
     display: none;
 }
 
-/* .canvas-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 700px;
-    width: 700px;
-    background: url(../background/background.png) no-repeat center;
-} */
-
 #canvas {
-    height: 500px;
+    /* height: 500px; */
+    width: 100%;
     border: 6px solid rgba(235, 238, 243, 0.09);
     border-radius: 30px;
     display: block;
@@ -270,19 +276,28 @@ img {
     outline: none;
 }
 
-.btn-up-down-arrow {
+.title-controller .btn-up-down-arrow {
     background: url(../icons/upDownArrow.png) no-repeat center, linear-gradient(-38deg, #66c4dc 0%, #40b1ce 50%, #0c98bb 100%);
     box-shadow: 1px 5px 0 #048b97, inset 0 5px 0 rgba(255, 255, 255, 0.58);
 }
 
-.btn-add-sentence {
+.title-controller .btn-add-sentence {
     box-shadow: 1px 5px 0 #015d33, inset 0 5px 0 rgba(255, 255, 255, 0.58);
     background: url(../icons/add.png) no-repeat center, linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
 }
 
-.btn-delete-text {
+.title-controller .btn-delete-text {
     box-shadow: 1px 5px 0 #8c0606, inset 0 5px 0 rgba(255, 255, 255, 0.58);
     background: url(../icons/delete.png) no-repeat center, linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+}
+
+.title-controller button:hover {
+    border: 2px solid #2a2a2a;
+    box-shadow: 1px 5px 0 #e9e9e96c, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+}
+
+.title-controller button:active {
+    box-shadow: 1px 5px 0 #2a2a2a, inset 0 5px 0 rgba(255, 255, 255, 0.58);
 }
 
 .fonts-panel {
@@ -306,6 +321,15 @@ img {
     background-color: #ffffff;
     border: none;
     outline: none;
+}
+
+.fonts-panel button:hover {
+    border: 2px solid #2a2a2a;
+    box-shadow: 1px 5px 0 #e9e9e96c, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+}
+
+.fonts-panel button:active {
+    box-shadow: 1px 5px 0 #2a2a2a, inset 0 5px 0 rgba(255, 255, 255, 0.58);
 }
 
 .btn-big-font {
@@ -336,7 +360,6 @@ img {
     width: 236px;
     height: 50px;
     border: none;
-    appearance: none;
     padding: 5px 30px;
     font-size: 1.28em;
     text-transform: uppercase;
@@ -344,6 +367,14 @@ img {
     box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
     border-radius: 10px;
     outline: none;
+}
+
+label[for="change-outline"]:hover {
+    border: 4px solid #065a56;
+}
+
+label[for="change-outline"]:active {
+    box-shadow: 1px 5px 0 rgba(2, 2, 2, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
 }
 
 label[for="change-outline"] {
@@ -355,7 +386,6 @@ label[for="change-outline"] {
     border-radius: 10px;
     background-color: #ffffff;
     border: none;
-    outline: none;
 }
 
 [name="change-outline"] {
@@ -364,6 +394,14 @@ label[for="change-outline"] {
     padding: 0;
     border: none;
     visibility: hidden;
+}
+
+label[for="change-color"]:hover {
+    border: 4px solid #065a56;
+}
+
+label[for="change-color"]:active {
+    box-shadow: 1px 5px 0 rgba(2, 2, 2, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
 }
 
 label[for="change-color"] {
@@ -424,6 +462,15 @@ label[for="change-color"] {
     font-family: poppinsR;
 }
 
+.socials-controller button:hover {
+    border: 2px solid #2a2a2a;
+    box-shadow: 1px 5px 0 #e9e9e96c, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+}
+
+.socials-controller button:active {
+    box-shadow: 1px 5px 0 #2a2a2a, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+}
+
 /*--------------- HELPERS ---------------*/
 
 /*--------------- flex helpers ---------------*/
@@ -456,20 +503,74 @@ label[for="change-color"] {
 
 /*--------------- MEDIA QUERIES ---------------*/
 
-/* @media (max-width: 300px) {
-} */
+@media (max-width: 1340px) {
+    body {
+        margin: 1rem;
+    }
+    .gallery-search>* {
+        margin: 10px;
+    }
+    .main-header .main-nav {
+        margin-right: 6rem;
+        transition: margin-right 0.3s;
+    }
+}
 
-/* @media (min-width: 490px) {
-} */
+@media (max-width: 950px) {
+    .main-header .main-nav {
+        margin-right: 3rem;
+        transition: margin-right 0.3s;
+    }
+}
 
-/* @media (min-width: 555px) {
-}  */
+@media (max-width: 813px) {
+    .main-header .main-nav {
+        margin-right: 5rem;
+        transition: margin-right 0.3s;
+    }
+    .main-header .main-nav li {
+        display: none;
+    }
+    .main-header .hamburger-menu {
+        display: block;
+    }
+    .gallery-search {
+        flex-direction: column;
+    }
+}
 
-/* @media (min-width: 630px) {
-}  */
+@media (max-width: 650px) {
+    .gallery-search .search {
+        width: 450px;
+    }
+    .gallery-search .tags {
+        width: 450px;
+    }
+}
 
-/* @media (min-width: 780px) {
-} */
-
-/* @media (min-width: 1000px) {
-}  */
+@media (max-width: 560px) {
+    .main-header {
+        padding: 0px;
+    }
+    .main-header .main-logo {
+        margin-left: 3rem;
+    }
+    .main-header a {
+        font-size: 18px;
+    }
+    .main-header .hamburger-menu {
+        margin-right: 3rem;
+    }
+    .gallery-search {
+        margin-bottom: 20px;
+    }
+    .gallery-search .search {
+        width: 325px;
+    }
+    .gallery-search .tags {
+        width: 325px;
+    }
+    .gallery-search .more {
+        display: none;
+    }
+}

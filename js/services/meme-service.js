@@ -26,7 +26,7 @@ function createMeme() {
     }
     gMeme = meme;
 }
-console.log('createMeme', gMeme);
+// console.log('createMeme', gMeme);
 
 
 
