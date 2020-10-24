@@ -1,9 +1,11 @@
 'use strict'
 
-// console.log('Hi');
+console.log('Hi servise');
 
 var gMeme = {}
 var gCtx;
+var gCurrLine = gMeme.selectedLineIdx;
+
 
 function createMeme(imgId) {
     var meme = {
@@ -23,19 +25,6 @@ function createMeme(imgId) {
                     stroke: 'black',
                     lineWidth: 2,
                 },
-                {
-                    txt: 'There',
-                    x: 250,
-                    y: 450,
-                    size: 50,
-                    font: 'impact',
-                    align: 'center',
-                    color: 'white',
-                    stroke: 'black',
-                    lineWidth: 2,
-                },
-
-
             ]
     }
     gMeme = meme;
@@ -45,14 +34,15 @@ function createMeme(imgId) {
 
 function drawText(text, x, y) {
     // console.log('gCtx', gCtx);
-
-    gCtx.font = gMeme.lines[0].size + 'px ' + gMeme.lines[0].font;
-    gCtx.textAlign = gMeme.lines[0].align;
-    gCtx.fillStyle = gMeme.lines[0].color;
-    gCtx.strokeStyle = gMeme.lines[0].stroke;
-    gCtx.lineWidth = gMeme.lines[0].lineWidth;
+    let i = gMeme.selectedLineIdx;
+    gCtx.font = gMeme.lines[i].size + 'px ' + gMeme.lines[i].font;
+    gCtx.textAlign = gMeme.lines[i].align;
+    gCtx.fillStyle = gMeme.lines[i].color;
+    gCtx.strokeStyle = gMeme.lines[i].stroke;
+    gCtx.lineWidth = gMeme.lines[i].lineWidth;
     gCtx.fillText(text, x, y);      //<---
     gCtx.strokeText(text, x, y);   //<---
+
 }
 
 function renderGallery() {
@@ -77,6 +67,8 @@ function toggleMenu() {
 
 function closeCanvas() {
     document.querySelector('main').style.display = 'block';
+    document.querySelector('.editor-content').style.display = 'none';
+    onInit();
 
 }
 
@@ -84,11 +76,6 @@ function setMemeText(text) {
     let i = gMeme.selectedLineIdx;
     gMeme.lines[i].txt = text;
 
-    // var elFocus = document.querySelector("#user-text");
-    // elFocus.classList.add("focus");
-    // console.log('elFocus', );
-
-    // להוסיף מסגרת לטקסט
 }
 
 function changeArrow() {
@@ -101,25 +88,35 @@ function changeArrow() {
 
 }
 
-function createLine(posX, posY) {
+function renderLine(posX, posY) {
+
     return { txt: 'puki', x: posX, y: posY, size: 50, font: 'impact', align: 'center', color: 'white', stroke: 'black', lineWidth: 2.5 };
+
 }
 
 function addAsentence() {
-    console.log('gMeme', gMeme);
-    gMeme.lines.push(createLine(250, 250));
-    gMeme.selectedLineIdx = gMeme.lines.length - 1;
-    // drawText(gMeme.lines[2].txt, gMeme.lines[2].x, gMeme.lines[2].y,)
+    // console.log('gMeme', gMeme);
+    if ((gMeme.selectedLineIdx === 0)) {
+        gMeme.lines.push(renderLine(250, 450));
+    } else if (gMeme.selectedLineIdx === 1) {
+        gMeme.lines.push(renderLine(250, 250));
+    } else if (gMeme.selectedLineIdx === 2) {
+        gMeme.lines.push(renderLine(250, 170));
+    }
+    else if (gMeme.selectedLineIdx === 3) {
+        gMeme.lines.push(renderLine(250, 330));
+    }
+    let i = gMeme.selectedLineIdx;
+    drawText(gMeme.lines[i].txt, gMeme.lines[i].x, gMeme.lines[i].y,);
+    gMeme.selectedLineIdx++
+
 }
 
-function deleteText() {
-    clearCanvas();
-    drawImgFromlocal();
-
-}
-
-function clearCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+function deleteLine() {
+    let i = gMeme.selectedLineIdx;
+    gMeme.lines[i].txt = '';
+    renderMeme();
+    gMeme.selectedLineIdx--
 }
 
 function setFontSize(size) {
@@ -148,7 +145,6 @@ function alignText(direction) {
             gMeme.lines[gMeme.selectedLineIdx].x = 490;
             break;
     }
-
 }
 
 function fontChange(value) {

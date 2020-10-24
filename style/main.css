@@ -51,6 +51,13 @@ img {
     display: none;
 }
 
+main{
+    display: block;
+
+}
+.editor-content{
+    display: none;
+}
 /*--------------- MAIN ---------------*/
 
 /*--------------- header area ---------------*/
@@ -290,7 +297,7 @@ input .focus-text{
     background: url(../icons/add.png) no-repeat center, linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
 }
 
-.title-controller .btn-delete-text {
+.title-controller .btn-delete-line {
     box-shadow: 1px 5px 0 #8c0606, inset 0 5px 0 rgba(255, 255, 255, 0.58);
     background: url(../icons/delete.png) no-repeat center, linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
 }

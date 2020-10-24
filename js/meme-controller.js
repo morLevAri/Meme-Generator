@@ -1,9 +1,9 @@
 'use strict'
-console.log('Hi-controller');
+console.log('Hi controller');
 
 var gCanvas;
 
-function onInit() {  // מה קורה כשהעמוד נטען
+function onInit() { 
     // console.log('enter init');
     gCanvas = document.querySelector('#canvas');
     gCtx = gCanvas.getContext('2d');
@@ -14,10 +14,10 @@ function onInit() {  // מה קורה כשהעמוד נטען
 }
 
 function showCanvas(event) {
-    clearCanvas();
     createMeme(event);
     renderMeme();
     document.querySelector('main').style.display = 'none';
+    document.querySelector('.editor-content').style.display = 'block';
 }
 
 function renderMeme() {
@@ -26,16 +26,16 @@ function renderMeme() {
     img.src = gMeme.selectedImgUrl;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-        
-        //לעשות לולאה!
-
-        drawText(gMeme.lines[0].txt, gMeme.lines[0].x, gMeme.lines[0].y,);
-        drawText(gMeme.lines[1].txt, gMeme.lines[1].x, gMeme.lines[1].y,);
-        // drawText(gMeme.lines[2].txt, gMeme.lines[2].x, gMeme.lines[2].y,)
-        // drawText(gMeme.lines[3].txt, gMeme.lines[3].x, gMeme.lines[3].y,)
-
+        for (var i = 0; i < gMeme.lines.length; i++) {
+            drawText(gMeme.lines[i].txt, gMeme.lines[i].x, gMeme.lines[i].y,);
+        }
     }
-    
+}
+
+
+function createLine() {
+
+    addAsentence();
 }
 
 // --------------------------
@@ -43,8 +43,8 @@ function renderMeme() {
 function onToggleMenu() {
     toggleMenu();
 }
-// --------------------------
 
+// --------------------------
 
 function onCloseCanvas() {
     closeCanvas();
@@ -56,29 +56,27 @@ function onSetMemeText(ev, text) {
     gMeme.lines[i].txt = value;
     setMemeText(text);
     // console.log(text);
-
     renderMeme()
 }
 
 function onChangeArrow() {
     changeArrow();
-    renderMeme();
 }
 
-function onAddAsentence(){
+function onAddAsentence() {
     addAsentence();
     renderMeme();
-
 }
 
-function onDeleteText() {
-    deleteText();
+function onDeleteLine() {
+    deleteLine();
 
 }
 
 function onSetFontSize(size) {
-    setFontSize(size);
     renderMeme();
+    setFontSize(size);
+
 }
 
 function onMoveText(dif) {
@@ -86,22 +84,22 @@ function onMoveText(dif) {
     renderMeme();
 }
 
-function onAlignText(direction){
+function onAlignText(direction) {
     alignText(direction);
     renderMeme();
 }
 
-function onFontChange(value){
+function onFontChange(value) {
     fontChange(value);
     renderMeme();
 }
 
-function onOutlineChange(value){
+function onOutlineChange(value) {
     outlineChange(value);
     renderMeme();
 }
 
-function onColorChange(value){
+function onColorChange(value) {
     colorChange(value);
     renderMeme();
 }

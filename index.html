@@ -45,7 +45,9 @@
 
     </main>
 
-    <section class="editor-container flex hide">
+
+    <div class="editor-content">
+    <section class="editor-container flex">
 
         <!-- <img class="background" src="background/background.png" alt=""> -->
 
@@ -66,7 +68,7 @@
             <div class="title-controller flex-between">
                 <button title="Switch line" class="switch-line" onclick="onChangeArrow()"></button>
                 <button title="Add line" class="btn-add-sentence" onclick="onAddAsentence()"></button>
-                <button title="Delete" class="btn-delete-text" onclick="onDeleteText()"></button>
+                <button title="Delete" class="btn-delete-line" onclick="onDeleteLine()"></button>
             </div>
 
             <input type="range" id="volume" name="volume" min="30" max="80" oninput="onSetFontSize(this.value)">
@@ -109,8 +111,10 @@
             <div class="stickers"></div>
 
             <div class="socials-controller flex">
+
                 <button class="btn-share"><a href="" onclick="shareMeme(this)"><i class="fa fa-share-alt"></i>
                         Share</a></button>
+
                 <button class="btn-download"><a href="#" onclick="downloadCanvas(this)" download=""><i
                             class="fa fa-download"></i> Download</a></button>
             </div>
@@ -119,6 +123,7 @@
 
 
     </section>
+    </div>
 
     <footer class="main-footer flex-around">
         <div class="footer-container">
