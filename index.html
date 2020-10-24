@@ -23,7 +23,9 @@
             <li><a href="#">About</a></li>
         </ul>
 
-        <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+        <button class="hamburger-menu" onclick="onToggleMenu()">☰</button>
+        <!-- <div class="screen" onclick="onToggleMenu()">X</div> -->
+
 
     </header>
 
@@ -39,69 +41,6 @@
 
 
         <section class="gallery-grid">
-
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/1.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/2.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/3.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/4.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/5.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/6.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/7.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/8.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/9.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/10.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/11.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/12.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/13.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/14.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/15.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/16.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/17.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/18.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/19.jpg">
-            </div>
-            <div class="gallery-img" onclick="showCanvas()">
-                <img src="img/20.jpg">
-            </div>
-
-
         </section>
 
     </main>
@@ -116,42 +55,54 @@
 
         <div class="editor flex">
 
+            <button class="btn-exit-text" onclick="onCloseCanvas()">X</button>
+
             <label for="user-text"></label>
-            <input type="text" id="user-text" name="user-text" placeholder="Your text" />
+            <input type="text" id="user-text" name="user-text" onfocus="this.value=''" placeholder="Your text"
+                oninput="onSetMemeText(event, this.value)" />
+
+
 
             <div class="title-controller flex-between">
-                <button class="btn-up-down-arrow" onclick="onUpDownArrow(this)"></button>
-                <button class="btn-add-sentence" onclick="onAddAsentence(this)"></button>
-                <button class="btn-delete-text" onclick="onDeleteText(this)"></button>
+                <button title="Switch line" class="switch-line" onclick="onChangeArrow()"></button>
+                <button title="Add line" class="btn-add-sentence" onclick="onAddAsentence()"></button>
+                <button title="Delete" class="btn-delete-text" onclick="onDeleteText()"></button>
             </div>
 
+            <input type="range" id="volume" name="volume" min="30" max="80" oninput="onSetFontSize(this.value)">
+
             <div class="fonts-panel">
-                <button class="btn-big-font" onclick="onChangeFontSize(this)">
-                    <button class="btn-small-font" onclick="onChangeFontSize(this)">
-                        <button class="btn-align-left" onclick="onTextAlign(this, direction)"></button>
-                        <button class="btn-align-center" onclick="onTextAlign(this, direction)"></button>
-                        <button class="btn-align-right" onclick="onTextAlign(this, direction)"></button>
+                <button title="Text up" class="line-up" onclick="onMoveText(-2)">
+                    <button title="Text down" class="line-down" onclick="onMoveText(2)">
+                        <button title="Align left" class="btn-align-left" onclick="onAlignText('left')"></button>
+                        <button title="Align center" class="btn-align-center" onclick="onAlignText('center')"></button>
+                        <button title="Align right" class="btn-align-right" onclick="onAlignText('right')"></button>
                         <!-- -------------------------------- -->
-                        <select class="select-font" name="select-font" onchange="onFontChange(this)">
-                            <option value="Impact">impact</option>
-                            <option value="Arial">arial</option>
-                            <option value="serif">serif</option>
-                            <option value="sans-serif">sans serif</option>
-                            <option value="Georgia">georgia</option>
-                            <option value="Tahoma">tahoma</option>
-                            <option value="Times New Roman">times new roman</option>
-                            <option value="cursive">cursive</option>
+
+                        <select title="Select font" class='select-font' name="select-font"
+                            onchange='onFontChange(this.value)'>
+                            <option>Impact</option>
+                            <option>Arial</option>
+                            <option>Comic</option>
+                            <option>cursive</option>
+                            <option>Verdana</option>
+                            <option>Times New Roman</option>
+                            <option>Serif</option>
+                            <option>sans-serif</option>
+                            <option>Georgia</option>
+                            <option>Tahoma</option>
                         </select>
 
 
-                        <label for="change-outline">
-                            <input type="color" id="change-outline" name="change-outline"
-                                onchange="onToggleOutline(this)"></button>
+
+                        <label for="change-outline" title="Outline color">
+                            <input type="color" title="Outline color" id="change-outline" name="change-outline"
+                                onchange="onOutlineChange(value)"></button>
                     </label>
 
-                    <label for="change-color">
-                        <input type="color" id="change-color" name="change-color"
-                            onchange="onColorChange(this)"></button>
+                    <label for="change-color" title="Text color">
+                        <input type="color" id="change-color" name="change-color" value="#000000"
+                            onchange="onColorChange(value)"></button>
                 </label>
             </div>
 
@@ -184,7 +135,8 @@
 
 
 
-    <script src="js/services/storage-service.js"></script>
+    <script src="js/storage-service.js"></script>
+    <!-- <script src="js/services/storage-service.js"></script> -->
     <script src="js/services/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
