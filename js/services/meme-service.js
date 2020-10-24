@@ -24,6 +24,8 @@ function createMeme(imgId) {
                     color: 'white',
                     stroke: 'black',
                     lineWidth: 2,
+                    // shadowColor: 'white',
+                    // shadowBlur: 0,
                 },
             ]
     }
@@ -127,22 +129,21 @@ function setFontSize(size) {
 function moveText(dif) {
     let i = gMeme.selectedLineIdx;
     gMeme.lines[i].y += dif;
-
 }
 
 function alignText(direction) {
     switch (direction) {
         case 'left':
-            gMeme.lines[gMeme.selectedLineIdx].align = 'left';
-            gMeme.lines[gMeme.selectedLineIdx].x = 10;
+            gMeme.lines[gMeme.selectedLineIdx].align = 'direction';
+            gMeme.lines[gMeme.selectedLineIdx].x = 100;
             break;
         case 'center':
-            gMeme.lines[gMeme.selectedLineIdx].align = 'center';
+            gMeme.lines[gMeme.selectedLineIdx].align = 'direction';
             gMeme.lines[gMeme.selectedLineIdx].x = 250;
             break;
         case 'right':
-            gMeme.lines[gMeme.selectedLineIdx].align = 'right';
-            gMeme.lines[gMeme.selectedLineIdx].x = 490;
+            gMeme.lines[gMeme.selectedLineIdx].align = 'direction';
+            gMeme.lines[gMeme.selectedLineIdx].x = 400;
             break;
     }
 }

@@ -74,8 +74,8 @@
             <input type="range" id="volume" name="volume" min="30" max="80" oninput="onSetFontSize(this.value)">
 
             <div class="fonts-panel">
-                <button title="Text up" class="line-up" onclick="onMoveText(-2)">
-                    <button title="Text down" class="line-down" onclick="onMoveText(2)">
+                <button title="Text up" class="line-up" onclick="onMoveText(-6)">
+                    <button title="Text down" class="line-down" onclick="onMoveText(6)">
                         <button title="Align left" class="btn-align-left" onclick="onAlignText('left')"></button>
                         <button title="Align center" class="btn-align-center" onclick="onAlignText('center')"></button>
                         <button title="Align right" class="btn-align-right" onclick="onAlignText('right')"></button>
@@ -140,8 +140,6 @@
 
 
 
-    <script src="js/storage-service.js"></script>
-    <!-- <script src="js/services/storage-service.js"></script> -->
     <script src="js/services/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
