@@ -1,0 +1,21 @@
+/*--------------- Fontface ---------------*/
+
+@font-face {
+    font-family: poppinsR;
+    src: url(../fonts/poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: poppinsL;
+    src: url(../fonts/poppins/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: poppinsXB;
+    src: url(../fonts/poppins/Poppins-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: poppinsSB;
+    src: url(../fonts/poppins/Poppins-SemiBold.ttf);
+}

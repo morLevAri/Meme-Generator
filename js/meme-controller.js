@@ -1,107 +1,136 @@
 'use strict'
 console.log('Hi controller');
 
-var gCanvas;
+let gCtx;
+let gCanvas;
 
-function onInit() { 
+
+function onInit() {
     // console.log('enter init');
     gCanvas = document.querySelector('#canvas');
     gCtx = gCanvas.getContext('2d');
     createMeme(1);
-    drawImgFromlocal();
-    renderMeme();
     renderGallery();
+    renderCanvas();
 }
 
 function showCanvas(event) {
     createMeme(event);
-    renderMeme();
+    renderCanvas();
     document.querySelector('main').style.display = 'none';
     document.querySelector('.editor-content').style.display = 'block';
 }
 
-function renderMeme() {
+function renderCanvas() {
     // console.log('gMeme' ,gMeme);
-    var img = new Image();
+    let img = new Image();
     img.src = gMeme.selectedImgUrl;
+    var meme = getMeme();
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-        for (var i = 0; i < gMeme.lines.length; i++) {
-            drawText(gMeme.lines[i].txt, gMeme.lines[i].x, gMeme.lines[i].y,);
-        }
+        meme.lines.forEach(line => {
+            drawText(line);
+        });
     }
 }
 
 
-function createLine() {
-
-    addAsentence();
+function drawText(line) {
+    let text = line.txt;
+    if (text = 'a') text = 'Your text here'
+    gCtx.font = line.size + 'px ' + line.font;
+    gCtx.textAlign = line.align;
+    gCtx.fillStyle = line.color;
+    gCtx.strokeStyle = line.stroke;
+    gCtx.lineWidth = line.lineWidth;
+    gCtx.fillText(line.txt, line.x, line.y);
+    gCtx.strokeText(line.txt, line.x, line.y);
+   
+    // gCtx.shadowColor = line.shadowColor;
+    // gCtx.shadowBlur = line.blur;
 }
 
-// --------------------------
 
-function onToggleMenu() {
-    toggleMenu();
+
+
+function renderGallery() {
+    let strHTML = '';
+    for (let i = 1; i <= 20; i++) {
+        strHTML += `<div class="gallery-img"onclick="showCanvas(${i})">\n \t<img src="img/${i}.jpg">\t</div>\n`
+    }
+    document.querySelector('.gallery-grid').innerHTML = strHTML;
 }
 
-// --------------------------
+// function toggleMenu() { //
+//     document.body.classList.toggle('menu-open');
+// }
 
-function onCloseCanvas() {
-    closeCanvas();
-}
+
 
 function onSetMemeText(ev, text) {
     const { value } = ev.target;
     let i = gMeme.selectedLineIdx;
     gMeme.lines[i].txt = value;
-    setMemeText(text);
     // console.log(text);
-    renderMeme()
+    setMemeText(text);
+    renderCanvas()
+}
+
+// --------------------------
+
+// function onToggleMenu() {
+//     toggleMenu();
+// }
+
+// --------------------------
+
+function onCloseCanvas() {
+    document.querySelector('main').style.display = 'block';
+    document.querySelector('.editor-content').style.display = 'none';
+    onInit();
 }
 
 function onChangeArrow() {
     changeArrow();
 }
 
-function onAddAsentence() {
-    addAsentence();
-    renderMeme();
+function onAddLine() {
+    addLine();
+    renderCanvas();
 }
 
 function onDeleteLine() {
     deleteLine();
-
 }
 
 function onSetFontSize(size) {
-    renderMeme();
     setFontSize(size);
-
+    renderCanvas();
 }
 
 function onMoveText(dif) {
     moveText(dif);
-    renderMeme();
+    renderCanvas();
 }
 
 function onAlignText(direction) {
     alignText(direction);
-    renderMeme();
+    renderCanvas();
 }
 
 function onFontChange(value) {
     fontChange(value);
-    renderMeme();
+    renderCanvas();
 }
 
 function onOutlineChange(value) {
     outlineChange(value);
-    renderMeme();
+    renderCanvas();
 }
 
 function onColorChange(value) {
     colorChange(value);
-    renderMeme();
+    renderCanvas();
 }
 
 // --------------------------

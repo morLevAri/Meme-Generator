@@ -2,20 +2,19 @@
 
 console.log('Hi servise');
 
-var gMeme = {}
-var gCtx;
-var gCurrLine = gMeme.selectedLineIdx;
+let gMeme = {}
+let gCurrLine = gMeme.selectedLineIdx;
 
 
 function createMeme(imgId) {
-    var meme = {
+    let meme = {
         selectedImgId: imgId,
         selectedLineIdx: 0,
         selectedImgUrl: `img/${imgId}.jpg`,
         lines:
             [
                 {
-                    txt: 'Hello',
+                    txt: 'Hello there!',
                     x: 250,
                     y: 100,
                     size: 50,
@@ -25,7 +24,7 @@ function createMeme(imgId) {
                     stroke: 'black',
                     lineWidth: 2,
                     // shadowColor: 'white',
-                    // shadowBlur: 0,
+                    // blur: 12,
                 },
             ]
     }
@@ -34,50 +33,14 @@ function createMeme(imgId) {
 
 }
 
-function drawText(text, x, y) {
-    // console.log('gCtx', gCtx);
-    let i = gMeme.selectedLineIdx;
-    gCtx.font = gMeme.lines[i].size + 'px ' + gMeme.lines[i].font;
-    gCtx.textAlign = gMeme.lines[i].align;
-    gCtx.fillStyle = gMeme.lines[i].color;
-    gCtx.strokeStyle = gMeme.lines[i].stroke;
-    gCtx.lineWidth = gMeme.lines[i].lineWidth;
-    gCtx.fillText(text, x, y);      //<---
-    gCtx.strokeText(text, x, y);   //<---
-
+function getMeme() {
+    return gMeme;
 }
 
-function renderGallery() {
-    var strHTML = '';
-    for (var i = 1; i <= 20; i++) {
-        strHTML += `<div class="gallery-img"onclick="showCanvas(${i})">\n \t<img src="img/${i}.jpg">\t</div>\n`
-    }
-    document.querySelector('.gallery-grid').innerHTML = strHTML;
-}
-
-function drawImgFromlocal() {
-    var img = new Image()
-    img.src = gMeme.selectedImgUrl;
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
-    }
-}
-
-function toggleMenu() {
-    document.body.classList.toggle('menu-open');
-}
-
-function closeCanvas() {
-    document.querySelector('main').style.display = 'block';
-    document.querySelector('.editor-content').style.display = 'none';
-    onInit();
-
-}
 
 function setMemeText(text) {
     let i = gMeme.selectedLineIdx;
     gMeme.lines[i].txt = text;
-
 }
 
 function changeArrow() {
@@ -90,23 +53,22 @@ function changeArrow() {
 
 }
 
-function renderLine(posX, posY) {
-
-    return { txt: 'puki', x: posX, y: posY, size: 50, font: 'impact', align: 'center', color: 'white', stroke: 'black', lineWidth: 2.5 };
-
+function getLine(posX, posY) {
+    return { txt: 'Your text here', x: posX, y: posY, size: 50, font: 'impact', align: 'center', color: 'white', stroke: 'black', lineWidth: 2};
 }
 
-function addAsentence() {
+function addLine() {
     // console.log('gMeme', gMeme);
+  
     if ((gMeme.selectedLineIdx === 0)) {
-        gMeme.lines.push(renderLine(250, 450));
+        gMeme.lines.push(getLine(250, 450));
     } else if (gMeme.selectedLineIdx === 1) {
-        gMeme.lines.push(renderLine(250, 250));
+        gMeme.lines.push(getLine(250, 275));
     } else if (gMeme.selectedLineIdx === 2) {
-        gMeme.lines.push(renderLine(250, 170));
+        gMeme.lines.push(getLine(250, 187.5));
     }
     else if (gMeme.selectedLineIdx === 3) {
-        gMeme.lines.push(renderLine(250, 330));
+        gMeme.lines.push(getLine(250, 362.5));
     }
     let i = gMeme.selectedLineIdx;
     drawText(gMeme.lines[i].txt, gMeme.lines[i].x, gMeme.lines[i].y,);
@@ -117,8 +79,8 @@ function addAsentence() {
 function deleteLine() {
     let i = gMeme.selectedLineIdx;
     gMeme.lines[i].txt = '';
-    renderMeme();
     gMeme.selectedLineIdx--
+    renderCanvas();
 }
 
 function setFontSize(size) {
@@ -135,7 +97,7 @@ function alignText(direction) {
     switch (direction) {
         case 'left':
             gMeme.lines[gMeme.selectedLineIdx].align = 'direction';
-            gMeme.lines[gMeme.selectedLineIdx].x = 100;
+            gMeme.lines[gMeme.selectedLineIdx].x = 150;
             break;
         case 'center':
             gMeme.lines[gMeme.selectedLineIdx].align = 'direction';
@@ -143,7 +105,7 @@ function alignText(direction) {
             break;
         case 'right':
             gMeme.lines[gMeme.selectedLineIdx].align = 'direction';
-            gMeme.lines[gMeme.selectedLineIdx].x = 400;
+            gMeme.lines[gMeme.selectedLineIdx].x = 350;
             break;
     }
 }

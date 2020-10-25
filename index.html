@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/helpers.css">
+    <link rel="stylesheet" href="style/fonts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Meme generator</title>
 
@@ -17,11 +19,11 @@
 
         <div class="main-logo"> <a href="">Meme Generator</a></div>
 
-        <ul class="main-nav clean-list flex-between">
+        <nav class="main-nav clean-list flex-between">
             <li><a href="index.html">Gallery</a></li>
             <li><a href="#">Memes</a></li>
             <li><a href="#">About</a></li>
-        </ul>
+        </nav>
 
         <button class="hamburger-menu" onclick="onToggleMenu()">☰</button>
         <!-- <div class="screen" onclick="onToggleMenu()">X</div> -->
@@ -33,9 +35,11 @@
 
 
         <section class="gallery-search flex-between">
-            <input class="search" type="text" id="search" name="search" placeholder="Search" />
+            <input class="search" type="text" id="search" name="search" placeholder="search (not...)" />
             <img class="search-icon" src="icons/search.png" alt="">
-            <div class="tags"></div>
+            <div class="tags">
+                <span>Fake</span> <b>tags </b><small></small>not </small><span>working </span>yet
+            </div>
             <button class="more">More</button>
         </section>
 
@@ -47,82 +51,83 @@
 
 
     <div class="editor-content">
-    <section class="editor-container flex">
+        <section class="editor-container flex">
 
-        <!-- <img class="background" src="background/background.png" alt=""> -->
+            <!-- <img class="background" src="background/background.png" alt=""> -->
 
-        <div class="canvas-container">
-            <canvas id="canvas" height="500" width="500"></canvas>
-        </div>
-
-        <div class="editor flex">
-
-            <button class="btn-exit-text" onclick="onCloseCanvas()">X</button>
-
-            <label for="user-text"></label>
-            <input type="text" id="user-text" name="user-text" onfocus="this.value=''" placeholder="Your text"
-                oninput="onSetMemeText(event, this.value)" />
-
-
-
-            <div class="title-controller flex-between">
-                <button title="Switch line" class="switch-line" onclick="onChangeArrow()"></button>
-                <button title="Add line" class="btn-add-sentence" onclick="onAddAsentence()"></button>
-                <button title="Delete" class="btn-delete-line" onclick="onDeleteLine()"></button>
+            <div class="canvas-container">
+                <canvas id="canvas" height="500" width="500"></canvas>
             </div>
 
-            <input type="range" id="volume" name="volume" min="30" max="80" oninput="onSetFontSize(this.value)">
+            <div class="editor flex">
 
-            <div class="grid-font-editor">
-                <button title="Text up" class="line-up" onclick="onMoveText(-6)">
-                    <button title="Text down" class="line-down" onclick="onMoveText(6)">
-                        <button title="Align left" class="btn-align-left" onclick="onAlignText('left')"></button>
-                        <button title="Align center" class="btn-align-center" onclick="onAlignText('center')"></button>
-                        <button title="Align right" class="btn-align-right" onclick="onAlignText('right')"></button>
-                        <!-- -------------------------------- -->
+                <button class="btn-exit-text" onclick="onCloseCanvas()">X</button>
 
-                        <select title="Select font" class='select-font' name="select-font"
-                            onchange='onFontChange(this.value)'>
-                            <option>Impact</option>
-                            <option>Arial</option>
-                            <option>Comic</option>
-                            <option>cursive</option>
-                            <option>Verdana</option>
-                            <option>Times New Roman</option>
-                            <option>Serif</option>
-                            <option>sans-serif</option>
-                            <option>Georgia</option>
-                            <option>Tahoma</option>
-                        </select>
+                <label for="user-text"></label>
+                <input type="text" id="user-text" name="user-text" maxlength=23, onfocus="this.value=''" placeholder="Your text"
+                    oninput="onSetMemeText(event, this.value)" />
 
 
 
-                        <label for="change-outline" title="Outline color">
-                            <input type="color" title="Outline color" id="change-outline" name="change-outline"
-                                onchange="onOutlineChange(value)"></button>
+                <div class="title-controller flex-between">
+                    <button title="Switch line" class="switch-line" onclick="onChangeArrow()"></button>
+                    <button title="Add line" class="btn-add-sentence" onclick="onAddLine()"></button>
+                    <button title="Delete" class="btn-delete-line" onclick="onDeleteLine()"></button>
+                </div>
+
+                <input type="range" id="volume" name="volume" min="30" max="80" oninput="onSetFontSize(this.value)">
+
+                <div class="grid-font-editor">
+                    <button title="Text up" class="line-up" onclick="onMoveText(-6)">
+                        <button title="Text down" class="line-down" onclick="onMoveText(6)">
+                            <button title="Align left" class="btn-align-left" onclick="onAlignText('left')"></button>
+                            <button title="Align center" class="btn-align-center"
+                                onclick="onAlignText('center')"></button>
+                            <button title="Align right" class="btn-align-right" onclick="onAlignText('right')"></button>
+                            <!-- -------------------------------- -->
+
+                            <select title="Select font" class='select-font' name="select-font"
+                                onchange='onFontChange(this.value)'>
+                                <option>Impact</option>
+                                <option>Arial</option>
+                                <option>Comic</option>
+                                <option>cursive</option>
+                                <option>Verdana</option>
+                                <option>Times New Roman</option>
+                                <option>Serif</option>
+                                <option>sans-serif</option>
+                                <option>Georgia</option>
+                                <option>Tahoma</option>
+                            </select>
+
+
+
+                            <label for="change-outline" title="Outline color">
+                                <input type="color" title="Outline color" id="change-outline" name="change-outline"
+                                    onchange="onOutlineChange(value)"></button>
+                        </label>
+
+                        <label for="change-color" title="Text color">
+                            <input type="color" id="change-color" name="change-color" value="#000000"
+                                onchange="onColorChange(value)"></button>
                     </label>
+                </div>
 
-                    <label for="change-color" title="Text color">
-                        <input type="color" id="change-color" name="change-color" value="#000000"
-                            onchange="onColorChange(value)"></button>
-                </label>
+                <!-- <div class="stickers"></div> -->
+
+                <div class="socials-controller flex">
+
+                    <button class="btn-share"><a href="" onclick="shareMeme(this)"><i class="fa fa-share-alt"></i>
+                            Share</a></button>
+
+                    <button class="btn-download"><a href="#" onclick="downloadCanvas(this)" download=""><i
+                                class="fa fa-download"></i> Download</a></button>
+                </div>
+
             </div>
 
-            <div class="stickers"></div>
 
-            <div class="socials-controller flex">
-
-                <button class="btn-share"><a href="" onclick="shareMeme(this)"><i class="fa fa-share-alt"></i>
-                        Share</a></button>
-
-                <button class="btn-download"><a href="#" onclick="downloadCanvas(this)" download=""><i
-                            class="fa fa-download"></i> Download</a></button>
-            </div>
-
-        </div>
-
-
-    </section>
+        </section>
     </div>
 
     <footer class="main-footer flex-around">

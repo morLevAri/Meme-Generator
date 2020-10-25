@@ -2,27 +2,6 @@
     box-sizing: border-box;
 }
 
-/*--------------- Fontface ---------------*/
-
-@font-face {
-    font-family: poppinsR;
-    src: url(../fonts/poppins/Poppins-Regular.ttf);
-}
-
-@font-face {
-    font-family: poppinsL;
-    src: url(../fonts/poppins/Poppins-Light.ttf);
-}
-
-@font-face {
-    font-family: poppinsXB;
-    src: url(../fonts/poppins/Poppins-ExtraBold.ttf);
-}
-
-@font-face {
-    font-family: poppinsSB;
-    src: url(../fonts/poppins/Poppins-SemiBold.ttf);
-}
 
 /*--------------- BASIC ---------------*/
 
@@ -147,19 +126,25 @@ main {
 .gallery-search .search-icon {
     position: relative;
     z-index: 2;
-    display: none;
+    /* display: none; */
     left: -55px;
     height: 30px;
     width: 30px;
 }
 
 .gallery-search .tags {
+    padding: 12px;
+    font-size: 25px;
+    text-align: center;
     width: 500px;
     height: 58px;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
     border-radius: 29px;
     background-color: #fefefe;
     opacity: 0.4;
+}
+.gallery-search .tags span{
+    font-size: 18px;
 }
 
 .gallery-search .more {
@@ -436,13 +421,13 @@ label[for="change-color"] {
     visibility: hidden;
 }
 
-.stickers {
+/* .stickers {
     width: 445px;
     height: 70px;
     border-radius: 45px;
     background-color: #ffffff;
     margin-bottom: 20px;
-}
+} */
 
 .socials-controller {
     gap: 1.6875rem;
@@ -481,36 +466,6 @@ label[for="change-color"] {
 
 .socials-controller button:active {
     box-shadow: 1px 5px 0 #2a2a2a, inset 0 5px 0 rgba(255, 255, 255, 0.58);
-}
-
-/*--------------- HELPERS ---------------*/
-
-/*--------------- flex helpers ---------------*/
-
-.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.flex-around {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.flex-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/*--------------- list-helpers ---------------*/
-
-.clean-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
 }
 
 /*--------------- MEDIA QUERIES ---------------*/
