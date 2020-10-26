@@ -19,26 +19,34 @@
 
         <div class="main-logo"> <a href="">Meme Generator</a></div>
 
-        <nav class="main-nav clean-list flex-between">
+
+        <nav class="main-nav clean-list flex">
             <li><a href="index.html">Gallery</a></li>
-            <li><a href="#">Memes</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="index.html">Memes</a></li>
+            <li><a href="index.html">About</a></li>
         </nav>
 
-        <button class="hamburger-menu" onclick="onToggleMenu()">☰</button>
-        <!-- <div class="screen" onclick="onToggleMenu()">X</div> -->
+        <a class="hamburger-menu" onclick="onToggleMenu()">
+            <i class="fa fa-bars"></i>
+        </a>
 
 
     </header>
 
     <main class="main-content gallery-container">
 
+        <nav class="mobile-nav clean-list">
+            <li><a href="index.html">Gallery</a></li>
+            <li><a href="index.html">Memes</a></li>
+            <li><a href="index.html">About</a></li>
+        </nav>
+
 
         <section class="gallery-search flex-between">
-            <input class="search" type="text" id="search" name="search" placeholder="search (not...)" />
+            <input class="search" type="text" id="search" name="search" placeholder="search (or not...)" />
             <img class="search-icon" src="icons/search.png" alt="">
             <div class="tags">
-                <span>Fake</span> <b>tags </b><small></small>not </small><span>working </span>yet
+                <span>tags</span> <b>not</b> <small>working</small> yet <span>don't</span> <b>try</b>
             </div>
             <button class="more">More</button>
         </section>
@@ -64,8 +72,8 @@
                 <button class="btn-exit-text" onclick="onCloseCanvas()">X</button>
 
                 <label for="user-text"></label>
-                <input type="text" id="user-text" name="user-text" maxlength=23, onfocus="this.value=''" placeholder="Your text"
-                    oninput="onSetMemeText(event, this.value)" />
+                <input type="text" id="user-text" name="user-text" maxlength=23, onfocus="this.value=''"
+                    placeholder="Your text" oninput="onSetMemeText(event, this.value)" />
 
 
 
@@ -75,7 +83,7 @@
                     <button title="Delete" class="btn-delete-line" onclick="onDeleteLine()"></button>
                 </div>
 
-                <input type="range" id="volume" name="volume" min="30" max="80" oninput="onSetFontSize(this.value)">
+                <input type="range" class="volume" id="volume" name="volume" min="30" max="80" oninput="onSetFontSize(this.value)">
 
                 <div class="grid-font-editor">
                     <button title="Text up" class="line-up" onclick="onMoveText(-6)">
@@ -130,15 +138,15 @@
         </section>
     </div>
 
-    <footer class="main-footer flex-around">
+    <footer class="main-footer flex">
         <div class="footer-container">
-            <small>All rights reserved 2020</small>
+            <small class="flex">All rights reserved 2020</small>
+            <ul class="footer-social flex-around clean-list">
+                <li class="social"><i class="fa fa-facebook"></i></li>
+                <li class="social"><i class="fa fa-twitter"></i></li>
+                <li class="social"><i class="fa fa-instagram"></i></li>
+            </ul>
         </div>
-        <ul class="footer-social flex-around clean-list">
-            <li class="social"><i class="fa fa-facebook"></i></li>
-            <li class="social"><i class="fa fa-twitter"></i></li>
-            <li class="social"><i class="fa fa-instagram"></i></li>
-        </ul>
 
     </footer>
 

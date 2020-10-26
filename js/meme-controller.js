@@ -61,10 +61,16 @@ function renderGallery() {
     document.querySelector('.gallery-grid').innerHTML = strHTML;
 }
 
-// function toggleMenu() { //
-//     document.body.classList.toggle('menu-open');
-// }
 
+function onToggleMenu() {
+    let i = document.querySelector('.mobile-nav');
+    
+    if (i.style.display === "block") {
+      i.style.display = "none";
+    } else {
+      i.style.display = "block";
+    }
+  }
 
 
 function onSetMemeText(ev, text) {
@@ -75,12 +81,6 @@ function onSetMemeText(ev, text) {
     setMemeText(text);
     renderCanvas()
 }
-
-// --------------------------
-
-// function onToggleMenu() {
-//     toggleMenu();
-// }
 
 // --------------------------
 
